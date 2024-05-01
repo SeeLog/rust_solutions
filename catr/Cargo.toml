@@ -9,6 +9,7 @@ edition = "2021"
 clap = "4.5.4"
 
 [dev-dependencies]
+anyhow = "1.0.82"
 assert_cmd = "2.0.14"
 predicates = "3.1.0"
 rand = "0.8.5"
