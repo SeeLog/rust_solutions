@@ -14,8 +14,7 @@ pub struct Config {
 }
 
 pub fn run(config: Config) -> MyResult<()> {
-    let files = config.files.clone();
-    for filename in files {
+    for filename in &config.files {
         match open(&filename) {
             Err(e) => eprintln!("Failed to open {}: {}", filename, e),
             Ok(reader) => print_lines(reader, &config),
