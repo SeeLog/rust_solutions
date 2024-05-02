@@ -418,3 +418,15 @@ fn multiple_files_c4() -> Result<()> {
         "tests/expected/all.c4.out",
     )
 }
+
+#[test]
+fn test_parse_positive_int() {
+    let res = headr::parse_positive_int("3");
+    assert_eq!(res.unwrap(), 3);
+
+    let res = headr::parse_positive_int("foo");
+    assert!(res.is_err());
+
+    let res = headr::parse_positive_int("0");
+    assert!(res.is_err());
+}
