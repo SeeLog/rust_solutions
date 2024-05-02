@@ -51,11 +51,14 @@ fn show_lines(mut reader: Box<dyn BufRead>, lines: usize) -> MyResult<()> {
 
 fn show_bytes(mut reader: Box<dyn BufRead>, bytes: usize) -> MyResult<()> {
     let mut buf = vec![0; bytes];
-    let result = reader.read_exact(buf.as_mut_slice());
+    let result = reader.read(buf.as_mut_slice());
+
     if let Err(e) = result {
         eprintln!("headr: error reading '{}': {}", "stdin", e);
         return Ok(());
     }
+
+    buf.truncate(result?);
     print!("{}", String::from_utf8_lossy(&buf));
 
     Ok(())
