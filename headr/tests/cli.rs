@@ -420,6 +420,14 @@ fn multiple_files_c4() -> Result<()> {
 }
 
 #[test]
+fn larger_bytes() -> Result<()> {
+    run(
+        &["-c", "10000", EMPTY, ONE, TWO, THREE, TWELVE],
+        "tests/expected/all.c10000.out",
+    )
+}
+
+#[test]
 fn test_parse_positive_int() {
     let res = headr::parse_positive_int("3");
     assert_eq!(res.unwrap(), 3);
