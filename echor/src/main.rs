@@ -27,4 +27,4 @@ fn main() {
     let omit_newline = matches.get_flag("omit_newline");
     let ending = if omit_newline { "" } else { "\n" };
     print!("{}{}", text.join(" "), ending);
-Aa}
+}
